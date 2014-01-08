@@ -1,28 +1,43 @@
-.reveal h1,
-.reveal h2,
-.reveal h3,
-.reveal h4,
-.reveal h5,
-.reveal h6 {
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+
+
+h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
 
-.reveal { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-weight: normal; }
+div { font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; font-weight: normal; }
 
-.reveal section h1 { margin-bottom: 30px; font-size: 3.14em; }
-.reveal section.small-title h1 { font-size: 2.5em; }
+section h1 { margin-bottom: 30px; font-size: 3.14em; }
+section.small-title h1 { font-size: 2.5em; }
 
-.reveal ul { display: block; margin-left: 1em; }
+ul { display: block; margin-left: 1em; }
 
-.reveal dl dt { text-align: left; font-weight: bold; }
-.reveal dl dd { text-align: left; margin-left: 1.5em; }
+dl dt { text-align: left; font-weight: bold; }
+dl dd { text-align: left; margin-left: 1.5em; }
 .syntax pre { box-shadow: none; font-size: 1.2em; }
-.reveal img { max-height: 80%; }
+img { max-height: 80%; }
 
-.reveal section pre { box-shadow: none; }
-.small-code pre { font-size: 0.45em; }
-.big-code pre { font-size: 0.9em; box-shadow: none; }
+section pre { box-shadow: none; }
+section pre code { background: inherit; color: inherit;  }
+section.small-code pre code { font-size: 0.45em; }
+section.big-code pre code { font-size: 0.9em; box-shadow: none; }
 
 #concurrency-table { width: 100%; color: #666; }
 #concurrency-table .num { text-align: right; }
@@ -55,9 +70,11 @@ svg.full { width: 100%; }
 .diagram .phase.optimize path { stroke: black; fill: none; }
 .diagram .right-title text { text-anchor: end; font-weight: bold; }
 
+/*
 body > div.reveal {
   background-image: url(http://bob.ippoli.to/why-haskell-2013/img/Haskell-Logo-Background.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 }
+*/

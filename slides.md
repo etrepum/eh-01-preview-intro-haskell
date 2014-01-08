@@ -1,6 +1,13 @@
-% Why Haskell?
-% Bob Ippolito
-% December 3, 2013
+<section>
+<h1>Why Haskell?</h1>
+<h2>Bob Ippolito</h2>
+<h3>January 8, 2014</h3>
+<br/>
+Want to learn more? Take my
+[Intro to Haskell](http://www.enginehere.com/courses/intro-to-haskell-etrepum/)
+course at<br/>
+[enginehere.com/courses/intro-to-haskell-etrepum](http://www.enginehere.com/courses/intro-to-haskell-etrepum/)
+</section>
 
 # Haskell's Appeal
 
@@ -27,7 +34,7 @@
 
 <!-- http://www.haskell.org/haskellwiki/Haskell_Brooks_Curry -->
 <figure>
-<img src="img/HaskellBCurry.jpg">
+<img src="http://bob.ippoli.to/why-haskell-2013/img/HaskellBCurry.jpg">
 <figcaption>**Haskell** B. Curry</figcaption>
 </figure>
 </section>
@@ -69,7 +76,7 @@
 <section id="ifip-1992">
 <!-- extracted from history.pdf -->
 <figure>
-<img src="img/ifip-1992.jpg" />
+<img src="http://bob.ippoli.to/why-haskell-2013/img/ifip-1992.jpg" />
 <figcaption>IFIP 1992 Working Group</figcaption>
 </figure>
 </section>
@@ -184,6 +191,8 @@ Skedge:
 -->
 [janrain](http://janrain.com/)
 ~   User management platform.
+[AlephCloud](http://www.alephcloud.com/)
+~   Content-centric security for cloud and mobile
 [Spaceport](http://spaceport.io/) (Facebook, Aug 2013)
 ~   Mobile game framework using ActionScript 3
 [scrive](http://scrive.com/)
@@ -208,6 +217,7 @@ Dependently typed
 Compile to JavaScript
 ~   [Elm](http://elm-lang.org/) - functional reactive in the browser
 ~   [Fay](http://fay-lang.org/) - Haskell subset
+~   [purescript](https://github.com/paf31/purescript) - Haskell-like syntax, statically typed
 Imperative
 ~   [Pugs](http://pugscode.org/) - first Perl 6 implementation
 </section>
@@ -883,7 +893,7 @@ https://ghc.haskell.org/trac/ghc/wiki/RewriteRules
 </section>
 
 <section id="lazy-ramsey">
-![lazy](img/ramsey-lazy-2013.jpg)
+![lazy](http://bob.ippoli.to/why-haskell-2013/img/ramsey-lazy-2013.jpg)
 </section>
 
 <section id="call-by-need">
