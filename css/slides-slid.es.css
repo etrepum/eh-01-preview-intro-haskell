@@ -35,9 +35,10 @@ dl dd { text-align: left; margin-left: 1.5em; }
 img { max-height: 80%; }
 
 section pre { box-shadow: none; }
-section pre code { background: inherit; color: inherit;  }
-section.small-code pre code { font-size: 0.45em; }
-section.big-code pre code { font-size: 0.9em; box-shadow: none; }
+section pre code { background: inherit; color: inherit; max-height: inherit; font-size: 200%; line-height: 125%; }
+section.small-code pre code { font-size: 0.9em; }
+section.medium-code pre code { font-size: 1.35em; box-shadow: none; }
+section.big-code pre code { font-size: 1.8em; box-shadow: none; }
 
 #concurrency-table { width: 100%; color: #666; }
 #concurrency-table .num { text-align: right; }

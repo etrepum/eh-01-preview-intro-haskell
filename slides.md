@@ -3,9 +3,7 @@
 <h2>Bob Ippolito</h2>
 <h3>January 8, 2014</h3>
 <br/>
-Want to learn more? Take my
-[Intro to Haskell](http://www.enginehere.com/courses/intro-to-haskell-etrepum/)
-course at<br/>
+Want to learn more? Take my [Intro to Haskell] course at<br/>
 [enginehere.com/courses/intro-to-haskell-etrepum](http://www.enginehere.com/courses/intro-to-haskell-etrepum/)
 </section>
 
@@ -26,6 +24,226 @@ course at<br/>
 - I practice regularly and try to read Haskell often
 - I'm not an expert!
 </section>
+
+<section id="section-hello-world" class="stack">
+
+<section id="hello-world-basic">
+<h1>Hello world!</h1>
+```haskell
+
+main = print "hello world"
+```
+</section>
+
+<section id="hello-world-types">
+<h1>With types</h1>
+```haskell
+
+main :: IO ()
+main = putStrLn "hello world"
+```
+</section>
+
+<section id="hello-world-wopr">
+You'll need a local Haskell interpreter for this due to input.
+You can replace `getLine` with `return "some input"` to try here.
+
+Run with `runhaskell WOPR.hs`.
+
+```haskell
+
+-- WOPR.hs
+
+main :: IO ()
+main = do
+  putStrLn "WHAT GAME WOULD YOU LIKE TO PLAY?"
+  game <- getLine
+  if game == "GLOBAL THERMONUCLEAR WAR"
+    then putStrLn "WOULDN'T YOU PREFER A NICE GAME OF CHESS?"
+    else putStrLn "GOOD CHOICE."
+```
+</section>
+
+<section id="hello-world-circleArea">
+<h1>Functions</h1>
+```haskell
+
+circleArea :: Float -> Float
+circleArea r = pi * r ^ 2
+
+main :: IO ()
+main = print (circleArea 10)
+```
+</section>
+
+<section id="hello-world-circleArea-lambda">
+<h1>Functions</h1>
+```haskell
+
+circleArea :: Float -> Float
+circleArea = \r -> pi * r ^ 2
+
+main :: IO ()
+main = print (circleArea 10)
+```
+</section>
+
+<section id="hello-world-rectangleArea">
+<h2>Multiple arguments</h2>
+```haskell
+
+rectangleArea :: Float -> Float -> Float
+rectangleArea w h = w * h
+
+main :: IO ()
+main = print (rectangleArea 10 40)
+```
+</section>
+
+<section id="hello-world-rectangleArea-lambda">
+<h2>Multiple arguments</h2>
+```haskell
+
+rectangleArea :: Float -> Float -> Float
+rectangleArea = \w -> \h -> w * h
+
+main :: IO ()
+main = print (rectangleArea 10 40)
+```
+</section>
+
+<section id="hello-world-and-patmatch">
+<h1>Pattern matching</h1>
+```haskell
+
+myAnd :: Bool -> Bool -> Bool
+myAnd True b = b
+myAnd _    _ = False
+
+main :: IO ()
+main = print (myAnd (10 > 5) (100 * 2 == 200))
+```
+</section>
+
+<section id="hello-world-and-patmatch-case">
+<h1>Pattern matching</h1>
+```haskell
+
+myAnd :: Bool -> Bool -> Bool
+myAnd = \a ->
+  case a of
+    True  -> \b -> b
+    False -> \_ -> False
+
+main :: IO ()
+main = print (myAnd (10 > 5) (100 * 2 == 200))
+```
+</section>
+
+<section id="hello-world-my-xor">
+<h2>Can you define xor?</h2>
+
+```haskell
+
+myXor :: Bool -> Bool -> Bool
+myXor a b = undefined
+
+main :: IO ()
+main = do
+  -- these should all print True
+  print (myXor True True == False)
+  print (myXor True False == True)
+  print (myXor False True == True)
+  print (myXor False False == False)
+```
+</section>
+
+<section id="hello-world-fac-guards">
+<h1>Guards</h1>
+
+```haskell
+
+fac :: Integer -> Integer
+fac n
+  | n > 1     = n * fac (n - 1)
+  | otherwise = n
+
+main :: IO ()
+main = print (fac 26)
+```
+</section>
+
+<section id="hello-world-op-xor-infix">
+<h1>Operators</h1>
+
+```haskell
+
+(.^) :: Bool -> Bool -> Bool
+True .^ True = False
+x    .^ y    = x || y
+
+main :: IO ()
+main = print (True .^ True)
+```
+</section>
+
+<section id="hello-world-op-xor-prefix-1">
+<h1>Operators</h1>
+
+```haskell
+
+(.^) :: Bool -> Bool -> Bool
+(.^) True True = False
+(.^) x    y    = x || y
+
+main :: IO ()
+main = print (True .^ True)
+```
+</section>
+
+<section id="hello-world-op-xor-prefix-2">
+<h1>Operators</h1>
+
+```haskell
+
+(.^) :: Bool -> Bool -> Bool
+True .^ True = False
+x    .^ y    = x || y
+
+main :: IO ()
+main = print ((.^) True True)
+```
+</section>
+
+<section id="hello-world-op-xor-infix-word">
+<h1>Operators</h1>
+
+```haskell
+
+xor :: Bool -> Bool -> Bool
+True `xor` True = False
+x    `xor` y    = x || y
+
+main :: IO ()
+main = print (xor True True)
+```
+</section>
+
+<section id="hello-world-op-xor-prefix-word">
+<h1>Operators</h1>
+
+```haskell
+
+(.^) :: Bool -> Bool -> Bool
+xor True True = False
+xor x    y    = x || y
+
+main :: IO ()
+main = print (True `xor` True)
+```
+</section>
+
+</section><!-- #section-hello-world -->
 
 <section id="section-history" class="stack">
 
@@ -309,6 +527,50 @@ data Choices = Choices { fstChoice :: Choice
 ```
 </section>
 
+<section id="adt-rock-paper-scissors">
+<h2>Time to model Rock Paper Scissors</h2>
+
+```haskell
+
+data Move = Rock
+          | Paper
+          | Scissors
+          deriving (Show, Eq)
+
+data Outcome = Lose
+             | Draw
+             | Win
+             deriving (Show, Eq)
+
+score :: Move -> Move -> Outcome
+score a b = undefined
+
+main :: IO ()
+main = do
+  print (score Rock Paper)
+  print (score Rock Scissors)
+```
+</section>
+
+<section id="adt-area">
+<h2>Implement shapeArea</h1>
+
+```haskell
+
+data Shape = Circle Float
+           | Rectangle Float Float
+           deriving (Show, Eq)
+
+shapeArea :: Shape -> Float
+shapeArea _ = undefined
+
+main :: IO ()
+main = do
+  print (shapeArea (Circle 10) == pi * 100)
+  print (shapeArea (Rectangle 2 12) == 24)
+```
+</section>
+
 <section id="using-types" class="big-code small-title">
 <h1>Using Types</h1>
 
@@ -355,7 +617,7 @@ instance (Equals a) => Equals [a] where
 <section id="section-syntax-values" class="stack">
 
 <section id="value-syntax" class="big-code small-title">
-<h1>Bindings &amp; Functions</h1>
+<h2>Bindings &amp; Functions</h2>
 ```haskell
 
 greeting :: String
@@ -597,7 +859,7 @@ h> hello
 * Pure, no side-effects?!
 </section>
 
-<section id="merge-sort">
+<section id="merge-sort" class="medium-code">
 ```haskell
 
 -- MergeSort1.hs
@@ -626,7 +888,7 @@ merge as [] = as
 ```
 </section>
 
-<section id="merge-sort-2">
+<section id="merge-sort-2" class="medium-code">
 ```haskell
 
 -- MergeSort2.hs
@@ -909,7 +1171,7 @@ http://research.microsoft.com/apps/pubs/default.aspx?id=67083
 * Pattern matching forces evaluation
 </section>
 
-<section id="evaluation" class="small-title">
+<section id="evaluation" class="small-title medium-code">
 
 ```haskell
 
@@ -988,7 +1250,7 @@ takeWhile p (x:xs)
 * Typeclasses for *ad hoc* polymorphism (overloading)
 </section>
 
-<section id="constraints">
+<section id="constraints" class="medium-code">
 
 ```haskell
 
@@ -1034,7 +1296,7 @@ parseBit _ = Nothing
 ```
 </section>
 
-<section id="bottoms">
+<section id="bottoms" class="medium-code">
 ```haskell
 
 h> let x = x in x
@@ -1054,7 +1316,7 @@ h> undefined
 ```
 </section>
 
-<section id="polymorphic">
+<section id="polymorphic" class="medium-code">
 
 ```haskell
 
@@ -1287,7 +1549,7 @@ instance Monad Maybe where
 <h1>Parser Combinators</h1>
 </section>
 
-<section id="parsing">
+<section id="parsing" class="medium-code">
 ```haskell
 {-# LANGUAGE OverloadedStrings #-}
 module SJSON where
@@ -1347,7 +1609,7 @@ main = replicateM_ 20 (c_rand >>= print)
 <h1>Parallel Programming</h1>
 </section>
 
-<section id="parallel-flip-image">
+<section id="parallel-flip-image" class="medium-code">
 ```haskell
 -- FlipImage.hs
 import System.Environment
@@ -1437,7 +1699,7 @@ RAM footprint per unit of concurrency (approx)
 </table>
 </section>
 
-<section id="concurrent-http">
+<section id="concurrent-http" class="medium-code">
 ```haskell
 
 import Control.Concurrent
@@ -1687,6 +1949,8 @@ Practice
 <h1>Thanks!</h1>
 
 +-------------+----------------------------------------------+
+| **Course**  | [Intro to Haskell]                           |
++-------------+----------------------------------------------+
 | **Slides**  | <http://bob.ippoli.to/why-haskell-2013/>     |
 +-------------+----------------------------------------------+
 | **Source**  | [github.com/etrepum/why-haskell-2013]        |
@@ -1709,6 +1973,7 @@ http://www.haskell.org/tutorial/goodies.html
 
 </section>
 
+[Intro to Haskell]: http://www.enginehere.com/courses/intro-to-haskell-etrepum/
 [github.com/etrepum/why-haskell-2013]: https://github.com/etrepum/why-haskell-2013
 [hdevtools]: https://github.com/bitc/hdevtools
 [ghc-mod]: http://www.mew.org/~kazu/proj/ghc-mod/en/
